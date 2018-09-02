@@ -29,10 +29,6 @@ static_resources:
                     prefix: "/service/2"
                   route:
                     cluster: service2
-                - match:
-                    prefix: "/service/3"
-                  route:
-                    cluster: service3
             http_filters:
             - name: envoy.router
               config: {}
@@ -54,15 +50,6 @@ static_resources:
     hosts:
     - socket_address:
         address: service2
-        port_value: 80
-  - name: service3
-    connect_timeout: 0.25s
-    type: strict_dns
-    lb_policy: round_robin
-    http2_protocol_options: {}
-    hosts:
-    - socket_address:
-        address: service3
         port_value: 80
 admin:
   access_log_path: "/dev/null"
